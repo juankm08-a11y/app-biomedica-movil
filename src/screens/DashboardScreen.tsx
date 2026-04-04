@@ -10,6 +10,10 @@ export default function DashboardScreen({ navigation }: any) {
   return (
     <View>
       <Text>Dashboard</Text>
+      <Button
+        title="Ver equipos"
+        onPress={() => navigation.navigate("Equipos")}
+      />
       <Button title="Cerrar Sesión" onPress={handleLogout} />
     </View>
   );
