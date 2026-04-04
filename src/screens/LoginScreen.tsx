@@ -11,10 +11,10 @@ export default function LoginScreen({ navigation }: any) {
     try {
       const response = await login(correo, password);
 
-      await AsyncStorage.setItem("access", response.access);
-      await AsyncStorage.setItem("refresh", response.refresh);
-      await AsyncStorage.setItem("rol", response.rol);
-      await AsyncStorage.setItem("usuario", response.usuario);
+      await AsyncStorage.setItem("access", String(response.access));
+      await AsyncStorage.setItem("refresh", String(response.refresh));
+      await AsyncStorage.setItem("rol", String(response.rol));
+      await AsyncStorage.setItem("usuario", String(response.usuario));
 
       navigation.navigate("Dashboard");
     } catch (error) {
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 
   input: {
     borderWidth: 1,
-    borderColor: "#accc",
+    borderColor: "#ccc",
     padding: 10,
     marginBottom: 10,
     borderRadius: 5,
