@@ -25,7 +25,7 @@ export default function AppNavigator() {
         options={{ title: "Detalle del Equipo" }}
       />
       <Stack.Screen
-        name="EquipoRegistro"
+        name="EquiposRegistro"
         component={EquipoRegistroScreen}
         options={{ title: "Registrar equipo" }}
       />

@@ -1,7 +1,23 @@
 import { Button, StyleSheet, Text, View } from "react-native";
+import { useEffect, useState } from "react";
 
-export default function EquipoDetalleScreen({ route, navigaton }: any) {
-  const { equipo } = route.params;
+export default function EquipoDetalleScreen({ route, navigation }: any) {
+  const [equipo, setEquipo] = useState<any>(null);
+
+  useEffect(() => {
+    if (route?.params.equipo) {
+      (console.log("EQUIPO RECIBIDO: ", equipo),
+        setEquipo(route.params.equipo));
+    }
+  }, [route]);
+
+  if (!equipo) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Cargando equipo...</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -28,7 +44,7 @@ export default function EquipoDetalleScreen({ route, navigaton }: any) {
       <View style={{ marginTop: 20 }}>
         <Button
           title="Editar equipo"
-          onPress={() => navigaton.navigate("EquipoRegistro", { equipo })}
+          onPress={() => navigation.navigate("EquiposRegistro", { equipo })}
         ></Button>
       </View>
     </View>

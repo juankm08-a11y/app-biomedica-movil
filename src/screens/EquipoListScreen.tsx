@@ -23,7 +23,10 @@ export default function EquiposListScreen({ navigation }: any) {
     return (
       <TouchableOpacity
         style={styles.card}
-        onPress={() => navigation("EquipoDetalle", { id: item.idEquipo })}
+        onPress={() => {
+          console.log("Equipo enviado:", item);
+          navigation.navigate("EquiposDetalle", { equipo: item });
+        }}
       >
         <Text style={styles.nombre}>{item.nombre}</Text>
         <Text>
