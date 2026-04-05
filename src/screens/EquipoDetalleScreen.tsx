@@ -1,16 +1,9 @@
 import { Button, StyleSheet, Text, View } from "react-native";
-import { useEffect, useState } from "react";
 
 export default function EquipoDetalleScreen({ route, navigation }: any) {
-  const [equipo, setEquipo] = useState<any>(null);
+  const equipo = route?.params?.equipo ?? null;
 
-  useEffect(() => {
-    if (route?.params.equipo) {
-      (console.log("EQUIPO RECIBIDO: ", equipo),
-        setEquipo(route.params.equipo));
-    }
-  }, [route]);
-
+  console.log("PARAMS:", route?.params);
   if (!equipo) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>

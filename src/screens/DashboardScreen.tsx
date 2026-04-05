@@ -18,10 +18,7 @@ export default function DashboardScreen({ navigation }: any) {
         title="Registrar equipo"
         onPress={() => navigation.navigate("EquiposRegistro")}
       />
-      <Button
-        title="Ver detalle equipo"
-        onPress={() => navigation.navigate("EquiposDetalle")}
-      />
+
       <Button title="Cerrar Sesión" onPress={handleLogout} />
     </View>
   );
