@@ -4,6 +4,7 @@ import DashboardScreen from "../screens/DashboardScreen";
 import EquiposListScreen from "../screens/EquipoListScreen";
 import EquipoDetalleScreen from "../screens/EquipoDetalleScreen";
 import EquipoRegistroScreen from "../screens/EquipoRegistroScreen";
+import MantenimientoScreen from "../screens/MantenimientosScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,11 @@ export default function AppNavigator() {
         name="EquiposRegistro"
         component={EquipoRegistroScreen}
         options={{ title: "Registrar equipo" }}
+      />
+      <Stack.Screen
+        name="Mantenimientos"
+        component={MantenimientoScreen}
+        options={{ title: "Ver Mantenimiento" }}
       />
     </Stack.Navigator>
   );

@@ -39,6 +39,12 @@ export default function EquipoDetalleScreen({ route, navigation }: any) {
           title="Editar equipo"
           onPress={() => navigation.navigate("EquiposRegistro", { equipo })}
         ></Button>
+        <Button
+          title="Ver mantenimiento"
+          onPress={() =>
+            navigation.navigate("Mantenimientos", { equipoId: equipo.idEquipo })
+          }
+        ></Button>
       </View>
     </View>
   );
