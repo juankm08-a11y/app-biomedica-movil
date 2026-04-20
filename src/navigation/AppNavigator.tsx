@@ -5,6 +5,8 @@ import EquiposListScreen from "../screens/EquipoListScreen";
 import EquipoDetalleScreen from "../screens/EquipoDetalleScreen";
 import EquipoRegistroScreen from "../screens/EquipoRegistroScreen";
 import MantenimientoScreen from "../screens/MantenimientosScreen";
+import MantenimientoDetalleScreen from "../screens/MantenimientoDetalleScreen";
+import MantenimientoRegistroScreen from "../screens/MantenimientoRegistroScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +37,16 @@ export default function AppNavigator() {
         component={MantenimientoScreen}
         options={{ title: "Ver Mantenimiento" }}
       />
+      <Stack.Screen 
+        name="MantenimientoDetalle" 
+        component={MantenimientoDetalleScreen} 
+        options={{title:"Detalle del Mantenimiento"}}
+       />
+        <Stack.Screen
+          name="MantenimientoRegistro"
+          component={MantenimientoRegistroScreen}
+          options={{title:"Registrar Mantenimiento"}}
+        />
     </Stack.Navigator>
   );
 }

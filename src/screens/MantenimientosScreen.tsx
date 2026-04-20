@@ -2,36 +2,48 @@ import { useEffect, useState } from "react";
 import { obtenerMantenimientos } from "../services/mantenimientoService";
 import { FlatList, Text, View } from "react-native";
 
-export default function MantenimientoScreen({ route }: any) {
-  const { equipoId } = route.params;
+export default function MantenimientoScreen() {
+    const [mantenimientos,setMantenimientos] = useState([]);
 
-  const [mantenimientos, setMantenimientos] = useState([]);
+    const cargarMantenimientos = async () => {
+        try {
+            const data = await obtenerMantenimientos()
 
-  const cargarMantenimientos = async () => {
-    const data = await obtenerMantenimientos();
+            setMantenimientos(data)
+        } catch (error) {
+            console.error("Error cargando mantenimientos",error);
+        }
+    }
 
-    const filtrados = data.filter((m: any) => m.equipo === equipoId);
+    useEffect(() => {
+        cargarMantenimientos()
+    },[])
 
-    setMantenimientos(filtrados);
-  };
-
-  useEffect(() => {
-    cargarMantenimientos();
-  }, []);
-  return (
-    <View>
-      <Text>Mantenimiento del Equipo</Text>
-      <FlatList
-        data={mantenimientos}
-        keyExtractor={(item: any) => item.idMantenimiento.toString()}
-        renderItem={({ item }: any) => (
-          <View>
-            <Text>Tipo: {item.tipo}</Text>
-            <Text>Estado: {item.estado}</Text>
-            <Text>Inicio: {item.fechaInicio}</Text>
-          </View>
-        )}
-      ></FlatList>
-    </View>
-  );
+    return (
+        <View style={{padding:20}}>
+            <Text style={{fontSize:20,fontWeight:"bold"}}>
+                Mantenimientos del Equipo
+            </Text>
+            <FlatList data={mantenimientos} keyExtractor={(item:any) => item.idMantenimiento.toString()} renderItem={({item}:any) => (
+                <View style={{
+                    padding:15,
+                    borderBottomWidth:1,
+                    borderColor:"#ddd"
+                }}
+                >
+                    <Text>
+                      Tipo:  {item.tipo}
+                    </Text>
+                    <Text>
+                        Estado: {item.estado}
+                    </Text>
+                    <Text>
+                        Inicio: {item.fechaInicio}
+                    </Text>
+                </View>
+            )}
+            />
+            
+        </View>
+    )
 }
